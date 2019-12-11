@@ -1,0 +1,2 @@
+rcsb.utils.io >= 0.48
+obonet >= 0.2.5
