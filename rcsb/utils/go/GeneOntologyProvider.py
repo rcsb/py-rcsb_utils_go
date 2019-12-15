@@ -110,6 +110,20 @@ class GeneOntologyProvider(object):
             logger.debug("Failing %s with %s", goId, str(e))
         return linL
 
+    def getUniqueDescendants(self, goIdL):
+        linL = []
+        try:
+            ndS = set()
+            for goId in goIdL:
+                for nd in networkx.descendants(self.__goGraph, goId):
+                    ndS.add(nd)
+            #
+            for nd in sorted(ndS):
+                linL.append((nd, self.getName(nd)))
+        except Exception as e:
+            logger.debug("Failing %s with %s", goId, str(e))
+        return linL
+
     def __reload(self, urlTarget, dirPath, useCache=True):
         """ Reload input GO OBO ontology file and return a nx graph object.
 '
