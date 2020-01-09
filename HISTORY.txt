@@ -1,3 +1,4 @@
 # RCSB_UTILS_EC HISTORY
  10-Dec-2019 V0.10 Initial package version
  15-Dec-2019 V0.11 Add getUniqueDescendants()
+ 09-Jan-2020 V0.12 Adjust criteria for testCache() method.

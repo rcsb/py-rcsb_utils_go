@@ -40,7 +40,7 @@ class GeneOntologyProvider(object):
         self.__goGraph = self.__reload(urlTarget, goDirPath, useCache=useCache)
 
     def testCache(self):
-        if self.__goGraph and networkx.is_directed_acyclic_graph(self.__goGraph):
+        if self.__goGraph:
             logger.info("Reading %d nodes and %d edges", len(self.__goGraph), self.__goGraph.number_of_edges())
             if len(self.__goGraph) > 44000:
                 return True

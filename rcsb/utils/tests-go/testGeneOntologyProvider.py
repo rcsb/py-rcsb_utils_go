@@ -43,7 +43,8 @@ class GeneOntologyProviderTests(unittest.TestCase):
         """
         try:
             goP = GeneOntologyProvider(goDirPath=self.__workPath, useCache=True)
-            goP.testCache()
+            ok = goP.testCache()
+            self.assertTrue(ok)
             #
             goId = "GO:2001317"
             ok = goP.exists(goId)
