@@ -100,9 +100,11 @@ class GeneOntologyProvider(object):
             pass
         return rL
 
-    def getDescendants(self, goId):
+    def getDescendants(self, goId, includeSelf=True):
         linL = []
         try:
+            if includeSelf:
+                linL.append((goId, self.getName(goId)))
             for nd in networkx.descendants(self.__goGraph, goId):
                 logger.debug("%r %r --> %r %r", goId, self.getName(goId), nd, self.getName(nd))
                 linL.append((nd, self.getName(nd)))
@@ -110,11 +112,13 @@ class GeneOntologyProvider(object):
             logger.debug("Failing %s with %s", goId, str(e))
         return linL
 
-    def getUniqueDescendants(self, goIdL):
+    def getUniqueDescendants(self, goIdL, includeSelf=True):
         linL = []
         try:
             ndS = set()
             for goId in goIdL:
+                if includeSelf:
+                    ndS.add(goId)
                 for nd in networkx.descendants(self.__goGraph, goId):
                     ndS.add(nd)
             #

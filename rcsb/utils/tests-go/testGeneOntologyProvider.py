@@ -69,7 +69,7 @@ class GeneOntologyProviderTests(unittest.TestCase):
                 self.assertIsNotNone(nL)
                 nL = goP.getSuccessors(goId)
                 self.assertIsNotNone(nL)
-                linL = goP.getDescendants(goId)
+                linL = goP.getDescendants(goId, includeSelf=False)
                 self.assertEqual(len(linL), numParents)
                 logger.debug("%a Lineage(%d) %r", goId, len(linL), linL)
 
