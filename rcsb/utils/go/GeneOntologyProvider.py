@@ -128,6 +128,38 @@ class GeneOntologyProvider(object):
             logger.debug("Failing %s with %s", goId, str(e))
         return linL
 
+    def exportTreeNodeList(self, goIdL):
+        """ For the input node list export full tree node list including parent nodes
+
+        Args:
+            goIdL (list): list of covered GO id lists
+            includeSelf (bool, optional): include input and parent nodes. Defaults to True.
+
+        Returns:
+            list: [{'id': <> 'name': <name> 'parents': [<id>,<id>,...]}]
+        """
+        trL = []
+        try:
+            # Generate the full list of nodes and parents -
+            ndS = set()
+            for goId in goIdL:
+                ndS.add(goId)
+                for nd in networkx.descendants(self.__goGraph, goId):
+                    ndS.add(nd)
+            #
+            for nd in ndS:
+                # tupL = [(child, parent, key)]
+                pIdL = [tup[1] for tup in self.getAdjacentParents(nd)]
+                if not pIdL:
+                    logger.info("Node %s (%s) has no parents", nd, self.getName(nd))
+                    trL.append({"id": nd, "name": self.getName(nd)})
+                else:
+                    trL.append({"id": nd, "name": self.getName(nd), "parents": pIdL})
+
+        except Exception as e:
+            logger.debug("Failing %s with %s", goId, str(e))
+        return trL
+
     def __reload(self, urlTarget, dirPath, useCache=True):
         """ Reload input GO OBO ontology file and return a nx graph object.
 '

@@ -55,7 +55,7 @@ class GeneOntologyProviderTests(unittest.TestCase):
 
             #
             rL = goP.getRootNodes()
-            logger.debug("root nodes %d", len(rL))
+            logger.info("root nodes %d", len(rL))
             self.assertEqual(len(rL), 3)
 
             #
@@ -72,6 +72,12 @@ class GeneOntologyProviderTests(unittest.TestCase):
                 linL = goP.getDescendants(goId, includeSelf=False)
                 self.assertEqual(len(linL), numParents)
                 logger.debug("%a Lineage(%d) %r", goId, len(linL), linL)
+
+            gIdL = [tup[0] for tup in goIdL]
+            trL = goP.exportTreeNodeList(gIdL)
+            logger.debug("trL %r", trL)
+            logger.debug("Length of tree node list %d", len(trL))
+            self.assertGreaterEqual(len(trL), 34)
 
         except Exception as e:
             logger.exception("Failing with %s", str(e))

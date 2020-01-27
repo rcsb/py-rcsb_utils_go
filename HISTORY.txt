@@ -3,3 +3,4 @@
  15-Dec-2019 V0.11 Add getUniqueDescendants()
  09-Jan-2020 V0.12 Adjust criteria for testCache() method.
  10-Jan-2020 V0.13 Add includeSelf option to descendent generator methods.
+ 27-Jan-2020 V0.14 Consolidated exportTreeNodeList list from rcsb.exdb
