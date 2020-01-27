@@ -76,7 +76,7 @@ class GeneOntologyProviderTests(unittest.TestCase):
             gIdL = [tup[0] for tup in goIdL]
             trL = goP.exportTreeNodeList(gIdL)
             logger.debug("trL %r", trL)
-            logger.debug("Length of tree node list %d", len(trL))
+            logger.info("Length of tree node list %d", len(trL))
             self.assertGreaterEqual(len(trL), 34)
 
         except Exception as e:

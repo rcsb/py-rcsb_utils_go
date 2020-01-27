@@ -4,3 +4,4 @@
  09-Jan-2020 V0.12 Adjust criteria for testCache() method.
  10-Jan-2020 V0.13 Add includeSelf option to descendent generator methods.
  27-Jan-2020 V0.14 Consolidated exportTreeNodeList list from rcsb.exdb
+ 28-Jan-2020 V0.15 Adjust exception handling

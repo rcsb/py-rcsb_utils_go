@@ -143,6 +143,9 @@ class GeneOntologyProvider(object):
             # Generate the full list of nodes and parents -
             ndS = set()
             for goId in goIdL:
+                if not self.exists(goId):
+                    logger.warning("%s not in current ontology", goId)
+                    continue
                 ndS.add(goId)
                 for nd in networkx.descendants(self.__goGraph, goId):
                     ndS.add(nd)
@@ -157,7 +160,7 @@ class GeneOntologyProvider(object):
                     trL.append({"id": nd, "name": self.getName(nd), "parents": pIdL})
 
         except Exception as e:
-            logger.debug("Failing %s with %s", goId, str(e))
+            logger.exception("Failing with %s", str(e))
         return trL
 
     def __reload(self, urlTarget, dirPath, useCache=True):
