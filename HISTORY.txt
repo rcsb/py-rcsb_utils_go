@@ -5,3 +5,4 @@
  10-Jan-2020 V0.13 Add includeSelf option to descendent generator methods.
  27-Jan-2020 V0.14 Consolidated exportTreeNodeList list from rcsb.exdb
  28-Jan-2020 V0.15 Adjust exception handling
+ 29-Jan-2020 V0.16 Restore DAG test and switch to go-basic.obo data source

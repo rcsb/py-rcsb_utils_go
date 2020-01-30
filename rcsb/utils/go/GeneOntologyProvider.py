@@ -33,8 +33,8 @@ class GeneOntologyProvider(object):
 
     def __init__(self, **kwargs):
         # Alternate: http://purl.obolibrary.org/obo/go.obo
-        # urlTarget = kwargs.get("urlTarget", "http://purl.obolibrary.org/obo/go/go-basic.obo")
-        urlTarget = kwargs.get("urlTarget", "http://purl.obolibrary.org/obo/go.obo")
+        urlTarget = kwargs.get("urlTarget", "http://purl.obolibrary.org/obo/go/go-basic.obo")
+        # urlTarget = kwargs.get("urlTarget", "http://purl.obolibrary.org/obo/go.obo")
         goDirPath = kwargs.get("goDirPath", ".")
         useCache = kwargs.get("useCache", True)
         self.__goGraph = self.__reload(urlTarget, goDirPath, useCache=useCache)
@@ -42,7 +42,7 @@ class GeneOntologyProvider(object):
     def testCache(self):
         if self.__goGraph:
             logger.info("Reading %d nodes and %d edges", len(self.__goGraph), self.__goGraph.number_of_edges())
-            if len(self.__goGraph) > 44000:
+            if networkx.is_directed_acyclic_graph(self.__goGraph) and len(self.__goGraph) > 44000:
                 return True
         return False
 
