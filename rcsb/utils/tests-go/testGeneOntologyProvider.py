@@ -39,8 +39,7 @@ class GeneOntologyProviderTests(unittest.TestCase):
         pass
 
     def testReloadGeneOntology(self):
-        """ Test load from source
-        """
+        """Test load from source"""
         try:
             goP = GeneOntologyProvider(goDirPath=self.__workPath, useCache=True)
             ok = goP.testCache()
@@ -70,7 +69,7 @@ class GeneOntologyProviderTests(unittest.TestCase):
                 nL = goP.getSuccessors(goId)
                 self.assertIsNotNone(nL)
                 linL = goP.getDescendants(goId, includeSelf=False)
-                self.assertEqual(len(linL), numParents)
+                self.assertGreaterEqual(len(linL), numParents)
                 logger.debug("%a Lineage(%d) %r", goId, len(linL), linL)
 
             gIdL = [tup[0] for tup in goIdL]
