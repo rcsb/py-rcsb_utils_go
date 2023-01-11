@@ -43,7 +43,7 @@ class GeneOntologyProvider(object):
     def testCache(self):
         if self.__goGraph:
             logger.info("Reading %d nodes and %d edges", len(self.__goGraph), self.__goGraph.number_of_edges())
-            # Numbers may change as ome terms become obsolete in future GO updates.
+            # Numbers may change as some terms become obsolete in future GO updates.
             # See http://geneontology.org/stats.html
             # and http://current.geneontology.org/release_stats/go-stats-summary.json
             if networkx.is_directed_acyclic_graph(self.__goGraph) and len(self.__goGraph) > 40000:

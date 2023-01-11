@@ -58,7 +58,7 @@ class GeneOntologyProviderTests(unittest.TestCase):
             self.assertEqual(len(rL), 3)
 
             #
-            # These numbers may change as ome terms become obsolete
+            # These numbers may change as some terms become obsolete
             # in future GO updates.
             # See http://geneontology.org/stats.html and https://github.com/geneontology/go-announcements
             goIdL = [("GO:0023052", 1), ("GO:0051179", 1), ("GO:0070727", 4), ("GO:1990747", 29)]
