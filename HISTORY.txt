@@ -7,3 +7,4 @@
  28-Jan-2020 V0.15 Adjust exception handling
  29-Jan-2020 V0.16 Restore DAG test and switch to go-basic.obo data source
   3-Feb-2020 V0.17 Update dependencies
+ 10-Jan-2023 V0.18 Configuration changes to support tox 4, upgrade testing to py39, fix tests
