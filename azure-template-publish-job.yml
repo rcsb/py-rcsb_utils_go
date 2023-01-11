@@ -2,7 +2,8 @@
 # Date: 8-Jul-2019 jdw split out from original pipeline
 #
 # Update:
-# 6-Aug-2019 jdw push source wheels (universal) for linux
+#  6-Aug-2019 jdw push source wheels (universal) for linux
+# 11-Jan-2023 aae update MacOS version
 #
 ##
 parameters:
@@ -15,7 +16,7 @@ jobs:
 - job: ${{ format('publish_{0}_{1}', parameters.tox, parameters.os) }}
   pool:
     ${{ if eq(parameters.os, 'macos') }}:
-      vmImage: 'macOS-10.14'
+      vmImage: 'macOS-11'
     ${{ if eq(parameters.os, 'linux') }}:
       vmImage: 'ubuntu-20.04'
   dependsOn:
