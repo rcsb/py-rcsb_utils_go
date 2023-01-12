@@ -12,7 +12,7 @@ from setuptools import setup
 packages = []
 thisPackage = "rcsb.utils.go"
 
-with open("rcsb/utils/go/__init__.py", "r") as fd:
+with open("rcsb/utils/go/__init__.py", "r", encoding="utf-8") as fd:
     version = re.search(r'^__version__\s*=\s*[\'"]([^\'"]*)[\'"]', fd.read(), re.MULTILINE).group(1)
 
 if not version:

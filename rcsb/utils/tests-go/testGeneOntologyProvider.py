@@ -58,7 +58,10 @@ class GeneOntologyProviderTests(unittest.TestCase):
             self.assertEqual(len(rL), 3)
 
             #
-            goIdL = [("GO:0023052", 1), ("GO:0051179", 1), ("GO:0070727", 4), ("GO:1990747", 30)]
+            # These numbers may change as some terms become obsolete
+            # in future GO updates.
+            # See http://geneontology.org/stats.html and https://github.com/geneontology/go-announcements
+            goIdL = [("GO:0023052", 1), ("GO:0051179", 1), ("GO:0070727", 4), ("GO:1990747", 29)]
             for goId, numParents in goIdL:
                 nm = goP.getName(goId)
                 self.assertIsNotNone(nm)
@@ -76,7 +79,7 @@ class GeneOntologyProviderTests(unittest.TestCase):
             trL = goP.exportTreeNodeList(gIdL)
             logger.debug("trL %r", trL)
             logger.info("Length of tree node list %d", len(trL))
-            self.assertGreaterEqual(len(trL), 34)
+            self.assertGreaterEqual(len(trL), 30)
 
         except Exception as e:
             logger.exception("Failing with %s", str(e))
