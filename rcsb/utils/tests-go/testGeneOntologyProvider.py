@@ -75,11 +75,19 @@ class GeneOntologyProviderTests(unittest.TestCase):
                 self.assertGreaterEqual(len(linL), numParents)
                 logger.debug("%a Lineage(%d) %r", goId, len(linL), linL)
 
+            # Test getting tree node list with input GO ID list
             gIdL = [tup[0] for tup in goIdL]
-            trL = goP.exportTreeNodeList(gIdL)
+            trL = goP.exportTreeNodeList(filterL=gIdL)
             logger.debug("trL %r", trL)
-            logger.info("Length of tree node list %d", len(trL))
+            logger.info("Length of filtered tree node list %d", len(trL))
             self.assertGreaterEqual(len(trL), 30)
+
+            # Test getting full tree node list (without input GO ID list)
+            gIdL = [tup[0] for tup in goIdL]
+            trL = goP.exportTreeNodeList()
+            logger.debug("trL %r", trL)
+            logger.info("Length of full tree node list %d", len(trL))
+            self.assertGreaterEqual(len(trL), 30000)
 
         except Exception as e:
             logger.exception("Failing with %s", str(e))
