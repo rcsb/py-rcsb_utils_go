@@ -7,7 +7,7 @@
 # Version: 0.001
 #
 # Update:
-# 08-Aug-2023 dwp Adjust exportTreeNodeList method to return full node list by default unless input GO ID filter list is provided
+# 01-Jul-2024 dwp Adjust exportTreeNodeList method to return full node list by default unless input GO ID filter list is provided
 #
 ##
 """
