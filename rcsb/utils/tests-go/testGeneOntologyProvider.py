@@ -61,7 +61,7 @@ class GeneOntologyProviderTests(unittest.TestCase):
             # These numbers may change as some terms become obsolete
             # in future GO updates.
             # See http://geneontology.org/stats.html and https://github.com/geneontology/go-announcements
-            goIdL = [("GO:0023052", 1), ("GO:0051179", 1), ("GO:0070727", 4), ("GO:1990747", 29)]
+            goIdL = [("GO:0023052", 1), ("GO:0051179", 1), ("GO:0070727", 4), ("GO:1990747", 28)]
             for goId, numParents in goIdL:
                 nm = goP.getName(goId)
                 self.assertIsNotNone(nm)
