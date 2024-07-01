@@ -7,7 +7,7 @@
 # Version: 0.001
 #
 # Update:
-#
+# 01-Jul-2024 dwp Adjust exportTreeNodeList method to return full node list by default unless input GO ID filter list is provided
 #
 ##
 """
@@ -105,6 +105,12 @@ class GeneOntologyProvider(object):
         return rL
 
     def getDescendants(self, goId, includeSelf=True):
+        """
+        Args:
+            goId (str): GO ID for which to get descendants.
+            includeSelf (bool, optional): include input and parent nodes. Defaults to True.
+        """
+
         linL = []
         try:
             if includeSelf:
@@ -132,18 +138,30 @@ class GeneOntologyProvider(object):
             logger.debug("Failing %s with %s", goId, str(e))
         return linL
 
-    def exportTreeNodeList(self, goIdL):
+    def getFullNodeList(self):
+        try:
+            return list(self.__goGraph.nodes)
+        except Exception as e:
+            logger.debug("Failing with %r", str(e))
+        return None
+
+    def exportTreeNodeList(self, filterL=None):
         """ For the input node list export full tree node list including parent nodes
 
         Args:
-            goIdL (list): list of covered GO id lists
-            includeSelf (bool, optional): include input and parent nodes. Defaults to True.
+            filterL (list): list of covered GO id lists
 
         Returns:
             list: [{'id': <> 'name': <name> 'parents': [<id>,<id>,...]}]
         """
         trL = []
         try:
+            goIdL = self.getFullNodeList()
+            logger.info("Full GO ID list length %d", len(goIdL))
+            if filterL:
+                goIdL = [gId for gId in goIdL if gId in filterL]
+            logger.info("Filtered GO ID list length %d", len(goIdL))
+
             # Generate the full list of nodes and parents -
             ndS = set()
             for goId in goIdL:
