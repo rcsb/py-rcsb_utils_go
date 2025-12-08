@@ -11,3 +11,4 @@
   1-Jul-2024 V0.19 Adjust exportTreeNodeList method to return full node list by default
   9-Dec-2024 V0.20 Update Azure pipelines to use latest macOS, Ubuntu, and python 3.10
  29-Jul-2025 V0.21 Update tests based on updated source GO data
+  8-Dec-2025 V0.22 Switch from setuptools to hatch build system and update pipelines to Python 3.13
