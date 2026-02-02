@@ -6,6 +6,7 @@
 #
 # Updates:
 #   29-Jul-2025 dwp Update tests based on changes to GO data on 2025-07-22
+#   02-Feb-2026 dwp Update tests based on changes to GO data on 2026-01-23
 #
 ##
 """
@@ -61,7 +62,7 @@ class GeneOntologyProviderTests(unittest.TestCase):
             # These numbers may change as some terms become obsolete
             # in future GO updates.
             # See http://geneontology.org/stats.html and https://github.com/geneontology/go-announcements
-            goIdL = [("GO:0023052", 1), ("GO:0051179", 1), ("GO:0033036", 2), ("GO:1990747", 26)]
+            goIdL = [("GO:0023052", 1), ("GO:0051179", 1), ("GO:0033036", 2), ("GO:1990747", 25)]
             for goId, numParents in goIdL:
                 print(goId)
                 nm = goP.getName(goId)

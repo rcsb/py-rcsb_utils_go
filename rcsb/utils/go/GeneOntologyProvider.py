@@ -9,6 +9,7 @@
 # Updates:
 #   01-Jul-2024 dwp Adjust exportTreeNodeList method to return full node list by default unless input GO ID filter list is provided
 #   29-Jul-2025 dwp Update test cache based on changes to GO data on 2025-07-22
+#   02-Feb-2026 dwp Update test cache based on changes to GO data on 2026-01-23
 #
 ##
 """
@@ -47,7 +48,7 @@ class GeneOntologyProvider(object):
             # Numbers may change as some terms become obsolete in future GO updates.
             # See http://geneontology.org/stats.html
             # and http://current.geneontology.org/release_stats/go-stats-summary.json
-            if networkx.is_directed_acyclic_graph(self.__goGraph) and len(self.__goGraph) > 39000:
+            if networkx.is_directed_acyclic_graph(self.__goGraph) and len(self.__goGraph) > 38000:
                 return True
         return False
 
